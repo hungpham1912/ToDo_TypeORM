@@ -1,0 +1,27 @@
+{
+   "name": "todo_jwt",
+   "version": "0.0.1",
+   "description": "Awesome project developed with TypeORM.",
+   "devDependencies": {
+      "@types/cors": "^2.8.12",
+      "@types/express": "^4.17.13",
+      "@types/jsonwebtoken": "^8.5.6",
+      "@types/node": "^8.0.29",
+      "ts-node": "3.3.0",
+      "typescript": "3.3.3333"
+   },
+   "dependencies": {
+      "cors": "^2.8.5",
+      "dotenv": "^10.0.0",
+      "express": "^4.17.1",
+      "jsonwebtoken": "^8.5.1",
+      "morgan": "^1.10.0",
+      "mysql": "^2.14.1",
+      "reflect-metadata": "^0.1.10",
+      "typeorm": "0.2.40"
+   },
+   "scripts": {
+      "start": "nodemon src/index.ts",
+      "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js"
+   }
+}

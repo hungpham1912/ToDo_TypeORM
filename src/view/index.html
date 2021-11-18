@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/jpg" href="/asset/shortlist.png" />
+    
+    <title>Todo</title>
+</head>
+
+<body style="margin: 0;">
+    <div id="signin" style="display: none;">
+        <div 
+            style="width: 100%;height: 1400px; background-color: black;position: fixed;z-index: 1;opacity: 0.5;">
+        </div>
+
+        <div id="form_signin">
+            <form style="position: fixed;z-index: 2;margin-left: 42%;margin-top: 200px">
+
+                <center>
+
+                    <div
+                        style="width: 300px; height: 400px;background-color: rgb(130, 247, 149); opacity: 2;border-radius: 10px;">
+                        <div style="width: 40px;height: 40px;float: right; transform: translate(10px,-10px);" onclick="exit()">
+                            <img src="/asset/remove.png" style="width: 100%;height: 100%;">
+                        </div>
+
+                        <h1>Sign In</h1>
+                        <input id="user" type="text"
+                            style="margin-bottom: 20px; font-size: 20px;height: 30px;width: 200px;margin-top: 50px;"><br>
+                        <input id="password" style="font-size: 20px;height: 30px;width: 200px;" type="password"><br>
+                        <p id="check" style="opacity: 0;"><i style="color: red;">*</i> Filed username or password </p>
+                        <input type="button" value="Sign In"
+                            style="margin-top: 10px; border: 0; width: 200px;height: 50px;border-radius: 10px;background-color: chartreuse;font-size: 30px;"
+                            onclick="SignIn()">
+                        <p style="font-size: 20px;"><a href="##" onclick="signup()">Sign Up</a></p>
+                    </div>
+                </center>
+            </form>
+        </div>
+    </div>
+    <div id="signup">
+        <div 
+            style="width: 100%;height: 1400px; background-color: black;position: fixed;z-index: 1;opacity: 0.5;">
+        </div>
+
+        <div id="form_signin">
+            <form style="position: fixed;z-index: 2;margin-left: 42%;margin-top: 200px">
+                <center>
+                    <div
+                        style="width: 300px; height: 450px;background-color: rgb(130, 247, 149); opacity: 2;border-radius: 10px;">
+                        <div style="width: 40px;height: 40px;float: right; transform: translate(10px,-10px);" onclick="exit()">
+                            <img src="/asset/remove.png" style="width: 100%;height: 100%;">
+                        </div>
+
+                        <h1>Sign Up</h1>
+                        <input id="user_signup" type="text" placeholder="Username"
+                            style="margin-bottom: 20px; font-size: 20px;height: 30px;width: 200px;margin-top: 50px;"><br>
+                        <input id="password_signup" style="font-size: 20px;height: 30px;width: 200px;" type="password" placeholder="Password"><br>
+                        <input id="confirm_password" style="font-size: 20px;height: 30px;width: 200px;margin-top: 20px;" type="password" placeholder="Confirm password"><br>
+                        <p id="check_signup" style="opacity: 0;"><i style="color: red;">*</i> Filed confirm password </p>
+                        <p id="check_signup2" style="opacity: 0;"><i style="color: red;">*</i> Account already exists  </p>
+
+                        <input type="button" value="Sign Up"
+                            style="margin-top: 10px; border: 0; width: 200px;height: 50px;border-radius: 10px;background-color: chartreuse;font-size: 30px;margin-top: 80px;"
+                            onclick="SignUp()">
+                            <p style="font-size: 20px;"><a href="##" onclick="signin()"> Sign In </a></p>
+
+                    </div>
+                </center>
+            </form>
+        </div>
+    </div>
+    <div id="name_user" style="float: right;margin-right: 400px;padding-top: 20px; border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;" onclick="change_user()">
+        <a href="##" style="text-decoration: none;color: black;"> <span id="personal" style="font-size: 40px">?Nah?</span></a>
+    </div>
+    <style>
+        #name_user:hover{
+            background-color: grey;
+        }
+    </style>
+    <div class="todo" style="padding-top: 100px;">
+        <!-- <form id="myForm" style="margin-top: 100px;"> -->
+        <center>
+            <input id="note" type="text" style="height: 50px;width: 300px;font-size: 20px;">
+            <input type="button" value="save"
+                style="height: 56px;border: 0;background-color: rgb(66, 65, 65);transform: translate(-5px,-2px);width: 80px;font-size: 16px;color: blanchedalmond;"
+                onclick="createTodo()">
+        </center>
+        <!-- </form> -->
+    </div>
+    <script src="/src/view/Animation.js"></script>
+    <script src="/src/view/getData.js"></script>
+    <div id="delete"
+        style="width: 300px;height: 100px;background-color: rgb(212, 214, 72);margin-left: 100px;border-radius: 20px;opacity: 0;">
+        <div style="width: 100%;height: 30%;">
+        </div>
+        <span style="font-size: 30px;margin-left: 20px;">Delete successfully!! </span>
+    </div>
+    <div id="update" style="width: 100%;height: 500px;position: fixed;opacity: 1;display: none; ">
+
+        <div id="content_update"
+            style="height: 100%;width: 60%;  margin-left: 20%;border-radius: 50px;background-color: gray;">
+            <div style="width: 45px;height: 45px;float: right;" onclick="closeUpdate()">
+                <img style="width: 100%;height: 100%;" src="/asset/remove.png">
+            </div>
+            <div style="width: 100%;height: 200px;border-radius: 50px;">
+                <div style="padding-top: 100px;">
+                    <span style="font-size: 50px;font-weight: 700;color: blanchedalmond;">Data update</span>
+                </div>
+            </div>
+            <input id="ids" style="width: 0px;height: 0px;opacity: 0;">
+            <input id="data_update" i style="width: 70%;height: 40px;float: left;font-size: 30px;margin-left: 5%;">
+            <input type="button" value="CONFIRM"
+                style="float: right; height: 45px;width: 120px;border: 0;border-radius: 5px;background-color: rgb(74, 129, 74);margin-right: 5%;"
+                onclick="updateConfirm()">
+        </div>
+    </div>
+    <div id="root" style=" width: 60%;height: 1000px;margin-left: 20%;margin-top: 100px;">
+        <div class="list"></div>
+    </div>
+</body>
+
+</html>
