@@ -1,11 +1,11 @@
 let tokens = "";
 let cout = 0;
 let idt;
-let athor = 0;
+let check_first_signin = 0;
 //GET START
 async function getStart(token) {
     console.log(token)
-    const response = await fetch('http://localhost:3006/todos', {
+    const response = await fetch('http://localhost:3007/todos', {
         method: 'GET',
         mode: 'cors',
         cache: 'no-cache',
@@ -57,14 +57,15 @@ async function getStart(token) {
     }
 
 }
-// getStart();
+
+
 
 //CREATE
 async function createTodo() {
     if (tokens == "") {
         alert("Please Sign in");
     } else {
-        const response = await fetch('http://localhost:3006/todos', {
+        const response = await fetch('http://localhost:3007/todos', {
             method: 'GET',
             mode: 'cors',
             cache: 'no-cache',
@@ -116,7 +117,7 @@ async function createTodo() {
         </table>
     </div>`;
         document.getElementById('note').value = "";
-        const responsep = await fetch('http://localhost:3006/todo/add', {
+        const responsep = await fetch('http://localhost:3007/todo/add', {
             method: 'POST',
             headers: {
                 Accept: '*/*',
@@ -140,13 +141,19 @@ async function createTodo() {
 
 //DELETE
 async function deleteTodo(id) {
+   
+    const response = fetch('http://localhost:3007/todo/delete/' + id, {
+        method: 'DELETE',
+        headers: {
+            Accept: '*/*',
+            'Content-Type': 'application/json'
+        },
+    })
     let root = document.getElementById('list');
     let list = document.getElementById(id);
     root.removeChild(list);
-    const response = fetch('http://localhost:3006/todo/delete/' + id, {
-        method: 'DELETE',
-    })
     let i_op_delete = 1;
+    document.getElementById('delete').style.display = "block";
     let delete_op = setInterval(function () {
         document.getElementById('delete').style.opacity = i_op_delete;
         i_op_delete -= 0.1;
@@ -176,7 +183,7 @@ async function updateConfirm() {
             clearInterval(update_color)
         }
     }, 1)
-    const responsep = await fetch('http://localhost:3006/todo/edit', {
+    const responsep = await fetch('http://localhost:3007/todo/edit', {
         method: 'PUT',
         headers: {
             Accept: '*/*',
@@ -196,7 +203,7 @@ async function SignIn() {
     }
 
 
-    const response = await fetch('http://localhost:3006/todo/signin', {
+    const response = await fetch('http://localhost:3007/todo/signin', {
         method: 'POST',
         headers: {
             Accept: '*/*',
@@ -212,13 +219,11 @@ async function SignIn() {
     else {
         document.getElementById('signin').style.display = 'none';
         document.getElementById('personal').innerHTML = data.username;
-        // getStart(result[0].accessToken);
-        if (athor == 0) {
+        if (check_first_signin == 0) {
             tokens = result[0].accessToken;
             getStart(result[0].accessToken);
-            athor = 1;
+            check_first_signin = 1;
         }
-        // alert(result[0].accessToken)
     }
 }
 
@@ -238,7 +243,7 @@ async function SignUp() {
             password: pw,
             level: 0
         }
-        const responsep = await fetch('http://localhost:3006/todo/signup', {
+        const responsep = await fetch('http://localhost:3007/todo/signup', {
             method: 'POST',
             headers: {
                 Accept: '*/*',

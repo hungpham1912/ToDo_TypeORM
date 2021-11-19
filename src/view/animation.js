@@ -1,14 +1,22 @@
 
-
+let password_show = 0;
 
 function updateTodo(ids) {
     document.getElementById('update').style.display = 'block';
     document.getElementById('ids').value = ids;
    const a = document.getElementById('data'+ids).innerText 
     document.getElementById('data_update').value= a;
+}
 
-    
-
+eye = function(){
+    if(password_show==0){
+        document.getElementById('password').type = 'text';
+        password_show=1;
+    }
+    else{
+        document.getElementById('password').type = 'password';
+        password_show=0;
+    }
 }
 
 signup = function(){

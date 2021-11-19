@@ -8,7 +8,6 @@ exports.verifyToken = function(req, res, next) {
   const token = authorizationHeader.split(' ')[1];
   if (!token) {
     res.sendStatus(401);
-
   }
   else {
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, data) => {
@@ -23,4 +22,3 @@ exports.verifyToken = function(req, res, next) {
 
 
 
-//  module.exports = verifyToken;
