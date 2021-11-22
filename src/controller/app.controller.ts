@@ -11,7 +11,7 @@ createConnection().then(connection => {
     const userRepository_User = connection.getRepository(User);
 
 
-    exports.get_All_Todos = async function (req: Request, res: Response) {
+    exports.get_all_Todos = async function (req: Request, res: Response) {
         const todos = await userRepository_Note.find();
         res.send(todos);
     }

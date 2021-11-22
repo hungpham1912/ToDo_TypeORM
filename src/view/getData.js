@@ -5,7 +5,7 @@ let check_first_signin = 0;
 //GET START
 async function getStart(token) {
     console.log(token)
-    const response = await fetch('http://localhost:3007/todos', {
+    const response = await fetch('http://localhost:3006/todos', {
         method: 'GET',
         mode: 'cors',
         cache: 'no-cache',
@@ -20,7 +20,7 @@ async function getStart(token) {
     let result = await response.json();
     const a = result.length;
     cout = a;
-    var htmlObj = document.getElementById('root');
+    const htmlObj = document.getElementById('root');
     htmlObj.innerHTML = htmlObj.innerHTML + '<div id="list"></div>'
     const listHtml = document.getElementById('list')
 
@@ -65,7 +65,7 @@ async function createTodo() {
     if (tokens == "") {
         alert("Please Sign in");
     } else {
-        const response = await fetch('http://localhost:3007/todos', {
+        const response = await fetch('http://localhost:3006/todos', {
             method: 'GET',
             mode: 'cors',
             cache: 'no-cache',
@@ -117,7 +117,7 @@ async function createTodo() {
         </table>
     </div>`;
         document.getElementById('note').value = "";
-        const responsep = await fetch('http://localhost:3007/todo/add', {
+        const responsep = await fetch('http://localhost:3006/todo', {
             method: 'POST',
             headers: {
                 Accept: '*/*',
@@ -142,7 +142,7 @@ async function createTodo() {
 //DELETE
 async function deleteTodo(id) {
    
-    const response = fetch('http://localhost:3007/todo/delete/' + id, {
+    const response = fetch('http://localhost:3006/todo/' + id, {
         method: 'DELETE',
         headers: {
             Accept: '*/*',
@@ -183,7 +183,7 @@ async function updateConfirm() {
             clearInterval(update_color)
         }
     }, 1)
-    const responsep = await fetch('http://localhost:3007/todo/edit', {
+    const responsep = await fetch('http://localhost:3006/todo', {
         method: 'PUT',
         headers: {
             Accept: '*/*',
@@ -203,7 +203,7 @@ async function SignIn() {
     }
 
 
-    const response = await fetch('http://localhost:3007/todo/signin', {
+    const response = await fetch('http://localhost:3006/signin', {
         method: 'POST',
         headers: {
             Accept: '*/*',
@@ -243,7 +243,7 @@ async function SignUp() {
             password: pw,
             level: 0
         }
-        const responsep = await fetch('http://localhost:3007/todo/signup', {
+        const responsep = await fetch('http://localhost:3006/signup', {
             method: 'POST',
             headers: {
                 Accept: '*/*',
