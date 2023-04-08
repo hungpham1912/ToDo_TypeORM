@@ -1,19 +1,17 @@
 {
-   "type": "mysql",
-   "host": "localhost",
-   "port": 3306,
-   "username": "root",
-   "password": "",
-   "database": "ToDo",
-   "synchronize": true,
-   "logging": false,
-   "entities": [
-      "src/entity/**/*.ts"
-   ],
-   "migrations": [
-      "src/migration/**/*.ts"
-   ],
-   "subscribers": [
-      "src/subscriber/**/*.ts"
-   ]
+  "type": "postgres",
+  "host": "ep-winter-queen-157000.us-east-2.aws.neon.tech",
+  "username": "hungpham1912",
+  "password": "2IzkVGvACbr5",
+  "database": "btl_api",
+  "synchronize": true,
+  "logging": false,
+  "extra": {
+    "ssl": {
+      "rejectUnauthorized": false
+    }
+  },
+  "entities": ["src/entity/**/*.ts"],
+  "migrations": ["src/migration/**/*.ts"],
+  "subscribers": ["src/subscriber/**/*.ts"]
 }
